@@ -27,13 +27,14 @@ textarea{
 
 .time-block{
   text-align: center;
-  border-radius: 15px;
+  border-radius: 15px 0px 0px 15px;
 }
 
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: px solid white;
+  margin: 0px 0px 2px 0px;
 }
 
 .hour {
@@ -55,6 +56,11 @@ textarea{
 
 .future {
   background-color: #77dd77;
+  color: white;
+}
+
+.editing {
+  background-color:lightblue;
   color: white;
 }
 

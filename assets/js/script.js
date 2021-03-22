@@ -11,11 +11,10 @@ var timeThreeEl = document.querySelector("#timeThree")
 var timeFourEl = document.querySelector("#timeFour")
 var timeFiveEl = document.querySelector("#timeFive")
 
-dateEl.innerHTML= currentDate;
 
+
+dateEl.innerHTML= currentDate
 console.log(currentHour)
-
-//moment(XXX).isValid to be used for color scheme maybe
 
 if (currentHour > 9) {
     $(timeNineEl).addClass("past")
@@ -23,6 +22,47 @@ if (currentHour > 9) {
 if (currentHour === 9) {
     $(timeNineEl).addClass("present")
 }
+
+
+
+
+
+
+
+
+
+
+$(timeNineEl).on("click", function()  {
+    console.log("form was clicked")
+    console.log(this);
+
+    var text = $(this)
+    .text()
+    .trim();
+
+
+    var taskText = $("<textArea>").text(text).addClass("time-block col-10 editing");
+    $(this).replaceWith(taskText)
+    taskText.trigger("focus");
+
+})
+
+$(saveBtnNine).on("click", function() {
+    console.log("save was clicked")
+
+    var text = $(timeNineEl)
+    .text()
+    .trim();
+
+    var taskDiv = $("<div>").text(text);
+    $(timeNineEl).replaceWith(taskDiv)
+    
+    console.log(timeNineEl)
+})
+
+
+
+
 
 
 if (currentHour > 10) {
@@ -112,6 +152,3 @@ if (currentHour === 17) {
 if (currentHour < 17) {
     $(timeFiveEl).addClass("future")
 }
-
-
-
