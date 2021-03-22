@@ -1,20 +1,44 @@
 var dateEl = document.getElementById("currentDay");
 var currentDate = moment();
 var currentHour = moment().hours();
-var timeNineEl = document.querySelector("#timeNine")
-var timeTenEl = document.querySelector("#timeTen")
-var timeElevenEl = document.querySelector("#timeEleven")
-var timeTwelveEl = document.querySelector("#timeTwelve")
-var timeOneEl = document.querySelector("#timeOne")
-var timeTwoEl = document.querySelector("#timeTwo")
-var timeThreeEl = document.querySelector("#timeThree")
-var timeFourEl = document.querySelector("#timeFour")
-var timeFiveEl = document.querySelector("#timeFive")
-
+var timeNineEl = $("#timeNine")
+var nineTextEl = $("#nineText")
+var timeTenEl = $("#timeTen")
+var timeElevenEl = $("#timeEleven")
+var timeTwelveEl = $("#timeTwelve")
+var timeOneEl = $("#timeOne")
+var timeTwoEl = $("#timeTwo")
+var timeThreeEl = $("#timeThree")
+var timeFourEl = $("#timeFour")
+var timeFiveEl = $("#timeFive")
 
 
 dateEl.innerHTML= currentDate
 console.log(currentHour)
+
+let planArray = [];
+
+$(saveBtnNine).on("click", function(event) {
+    event.preventDefault();
+    planArray [0];
+    var input = $("#nineText").val();
+    planArray.push(input)
+    localStorage.setItem("inputs", JSON.stringify(planArray));
+
+})
+
+
+localStorage.getItem("inputs", JSON.stringify(planArray));
+
+
+
+
+
+
+
+
+
+
 
 if (currentHour > 9) {
     $(timeNineEl).addClass("past")
@@ -23,47 +47,9 @@ if (currentHour === 9) {
     $(timeNineEl).addClass("present")
 }
 
-
-
-
-
-
-
-
-
-
-$(timeNineEl).on("click", function()  {
-    console.log("form was clicked")
-    console.log(this);
-
-    var text = $(this)
-    .text()
-    .trim();
-
-
-    var taskText = $("<textArea>").text(text).addClass("time-block col-10 editing");
-    $(this).replaceWith(taskText)
-    taskText.trigger("focus");
-
-})
-
-$(saveBtnNine).on("click", function() {
-    console.log("save was clicked")
-
-    var text = $(timeNineEl)
-    .text()
-    .trim();
-
-    var taskDiv = $("<div>").text(text);
-    $(timeNineEl).replaceWith(taskDiv)
-    
-    console.log(timeNineEl)
-})
-
-
-
-
-
+if (currentHour < 9) {
+    $(timeNineEl).addClass("future")
+}
 
 if (currentHour > 10) {
     $(timeTenEl).addClass("past")
@@ -152,3 +138,4 @@ if (currentHour === 17) {
 if (currentHour < 17) {
     $(timeFiveEl).addClass("future")
 }
+
